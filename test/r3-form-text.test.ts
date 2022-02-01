@@ -31,5 +31,22 @@ describe('R3FormText', ()=> {
       expect(el.withLabel).to.equal(false);
       assert.typeOf(el.withLabel, 'Boolean');
     });
+
+    describe('View Component in DOM', ()=> {
+      it('Label is not displayed', ()=> {//cuando label no sea visible, asegurar que no exita en el DOM
+        const text= el.shadowRoot?.querySelector('#label')?.textContent;
+        expect(text).to.equal(undefined);
+      });
+
+      it('Description is not displayed', ()=> {//cuando description no sea visible, asegurar que no existe en el DOM
+        const description= el.shadowRoot?.querySelector('#description')?.textContent;
+        expect(description).to.equal(undefined);
+      });
+
+      it('View input', ()=> {//Verificar que nuestri input existe
+        const input= el.shadowRoot?.querySelector('#input');
+        expect(input?.getAttribute('id')).to.equal('input');
+      })
+    });
   });
 });
