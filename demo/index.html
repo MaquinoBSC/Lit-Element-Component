@@ -15,11 +15,9 @@
     import { html, render } from 'lit';
     import '../dist/src/r3-form-text.js';
 
-    const title = 'Hello owc World!';
     render(
       html`
-        <r3-form-text .title=${title}>
-          some light-dom
+        <r3-form-text label="CUSTOM TEXT" with-label description="Hello World" with-description>
         </r3-form-text>
       `,
       document.querySelector('#demo')

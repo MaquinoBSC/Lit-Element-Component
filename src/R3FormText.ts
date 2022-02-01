@@ -1,16 +1,16 @@
-import { html, css, LitElement } from 'lit';
+import { html, LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
+import style from './R3FormTextStyle';
 
 export class R3FormText extends LitElement {
-  static styles = css`
-  `;
+  static styles = [style];
 
   @property({ type: String }) description = 'Default Text';
   @property({ type: String, attribute: 'description-type' }) descriptionType = 'info';
   @property({ type: String }) label = "Default Text";
   @property({ type: String }) placeholder= "Default Text";
   @property({ type: Boolean, attribute: 'with-description'}) withDescription= false;
-  @property({ type: Boolean, attribute: 'with-Label'}) withLabel= false;
+  @property({ type: Boolean, attribute: 'with-label'}) withLabel= false;
 
   get _getLabel(){
     return this.withLabel ? html`<label id="label"> ${this.label} </label>` : '';
@@ -26,9 +26,11 @@ export class R3FormText extends LitElement {
 
   render() {
     return html`
-      ${this._getLabel}
-      ${this._getInput}
-      ${this._getDescription}
+      <div class="container">
+        ${this._getLabel}
+        ${this._getInput}
+        ${this._getDescription}
+      </div>
     `;
   }
 }
