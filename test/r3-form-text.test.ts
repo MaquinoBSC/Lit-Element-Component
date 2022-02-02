@@ -13,6 +13,9 @@ describe('R3FormText', ()=> {
   describe('Default value', ()=> {
     cleanComponent();//cargar en limpio nuestro componente
     it('Props value', ()=> {
+      expect(el.ambient).to.equal('light');
+      assert.typeOf(el.ambient, 'String');
+      
       expect(el.label).to.equal('Default Text'); // expect metodo de testing de wc, label es una propieda y  valor por default es Deafult Text
       assert.typeOf(el.label, 'String');//assert es otro metodo de testing, que tipo de dato queremos que nuestra propiedad tenga
 

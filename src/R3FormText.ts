@@ -5,6 +5,7 @@ import style from './R3FormTextStyle';
 export class R3FormText extends LitElement {
   static styles = [style];
 
+  @property({ type: String }) ambient= 'light';
   @property({ type: String }) description = 'Default Text';
   @property({ type: String, attribute: 'description-type' }) descriptionType = 'info';
   @property({ type: String }) label = "Default Text";
@@ -26,7 +27,7 @@ export class R3FormText extends LitElement {
 
   render() {
     return html`
-      <div class="container">
+      <div class="container ${this.ambient}">
         ${this._getLabel}
         ${this._getInput}
         ${this._getDescription}
