@@ -47,6 +47,7 @@ export default css`
     .container.light #input {
         box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 1px 1px rgba(0,0,0,0.24);
         transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+        background: var(--main-color-white);
     }
 
     .container.light #input:hover {
@@ -54,12 +55,13 @@ export default css`
     }
 
     .container.dark #input {
-        box-shadow: 0 1px 1px rgba(255,255,255,0.12), 0 1px 1px rgba(255,255,255,0.24);
+        box-shadow: 0 1px 1px rgba(2,255,255,0.12), 0 1px 1px rgba(2,255,255,0.24);
         transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+        background: var(--main-color-dark);
     }
 
     .container.dark #input:hover {
-        box-shadow: 0 5px 10px rgba(255,255,255,0.25), 0 3px 5px rgba(255,255,255,0.22);
+        box-shadow: 0 5px 10px rgba(2,255,255,0.25), 0 3px 5px rgba(2,255,255,0.22);
     }
 
     #description {

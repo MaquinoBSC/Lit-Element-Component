@@ -5,9 +5,13 @@ export default {
   title: 'R3FormText',
   component: 'r3-form-text',
   argTypes: {
-    title: { control: 'text' },
-    counter: { control: 'number' },
-    textColor: { control: 'color' },
+    ambient: { control: 'ambient', description: 'Cambiar entre tema darl y light' },
+    description: { control: 'description', description: 'Texto inferior del input' },
+    descripcionType: { control: 'descriptionType', description: 'Cambiar el color de la description' },
+    label: { control: 'label', description: 'Texto superior en el input' },
+    placeholder: { control: 'placeholder', description: 'Texto dentro del input' },
+    withDescription: { control: 'withDescription', description: 'Mostar u ocultar la descripcion' },
+    withLabel: { control: 'withLabel', description: 'Mostrar u ocultar el texto superior'},
   },
 };
 
@@ -18,43 +22,60 @@ interface Story<T> {
 }
 
 interface ArgTypes {
-  title?: string;
-  counter?: number;
-  textColor?: string;
-  slot?: TemplateResult;
+  description: string,
+  descriptionType: string,
+  label: string,
+  ambient: string,
+  placeholder: string,
+  withDescription: boolean,
+  withLabel: boolean,
 }
 
 const Template: Story<ArgTypes> = ({
-  title = 'Hello world',
-  counter = 5,
-  textColor,
-  slot,
+  description= 'Default Text',
+  descriptionType= 'info',
+  label= 'Default Text',
+  ambient= 'light',
+  placeholder= 'Placeholder',
+  withDescription= false,
+  withLabel= false,
 }: ArgTypes) => html`
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=VT323&display=swap" rel="stylesheet">
   <r3-form-text
-    style="--r3-form-text-text-color: ${textColor || 'black'}"
-    .title=${title}
-    .counter=${counter}
+    description="${description}"
+    description-type="${descriptionType}"
+    label="${label}"
+    ambient="${ambient}"
+    placeholder="${placeholder}"
+    ?with-description="${withDescription}"
+    ?with-label="${withLabel}"
   >
-    ${slot}
   </r3-form-text>
 `;
 
-export const Regular = Template.bind({});
+export const Default = Template.bind({});
 
-export const CustomTitle = Template.bind({});
-CustomTitle.args = {
-  title: 'My title',
-};
+export const withLabel= Template.bind({});
+withLabel.args= {
+  label: 'Custom Text',
+  withLabel: true,
+}
 
-export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
-};
+export const withDescription= Template.bind({});
+withDescription.args= {
+  withDescription: true,
+  description: "Custom Description",
+  descriptionType: 'alert',
+}
 
-export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
-};
-SlottedContent.argTypes = {
-  slot: { table: { disable: true } },
-};
+export const darkTheme= Template.bind({});
+darkTheme.args= {
+  ambient: 'dark',
+  withDescription: true,
+  description: "Custom Description",
+  descriptionType: 'alert',
+  label: 'Custom Text',
+  withLabel: true,
+}
